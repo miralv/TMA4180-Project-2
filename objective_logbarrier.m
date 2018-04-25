@@ -8,7 +8,9 @@ m = length(w);
 f = 0; %function evaluation
 
 for i = 1:m
-    f = f + transpose(Z(:,i)'*A*Z(:,i) + b'*Z(:,i) - 1)*wi;
+    f = f + max((Z(:,i)'*A*Z(:,i) + b'*Z(:,i) - 1)*w(i),0);
+    % Kompaktisert denne litt fra 2eval.m
+    % Har bare ganget inn w(i) som sparer fire linjer med kode.
 end
 f = f - mu*log(A(1,1) - llambda);
 f = f - mu*log(-A(1,1) + ulambda);
