@@ -26,4 +26,3 @@ function [alpha] = linesearch(x,p,z,w,dim,c2)
         [~,grad_new] = model_1eval(x+alpha*p,z,w,dim);
     end % while
 end % function
-
