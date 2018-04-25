@@ -9,7 +9,6 @@
 
 %Barrier -Mira
 
-
 %SQP -Julie
 
 %Projected gradient -Sivert
