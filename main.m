@@ -7,15 +7,14 @@
 %solve by using the 4 different methods
 
 
+%Barrier -Mira
 
-%Barrier
 
+%SQP -Julie
 
-%SQP
+%Projected gradient -Sivert
 
-%Projected gradient
-
-%Augmented Lagrange
+%Augmented Lagrange -Håkon
 
 %Plotting
 
