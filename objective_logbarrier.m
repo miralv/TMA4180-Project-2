@@ -12,10 +12,13 @@ for i = 1:m
     % Kompaktisert denne litt fra 2eval.m
     % Har bare ganget inn w(i) som sparer fire linjer med kode.
 end
-f = f - mu*log(A(1,1) - llambda);
-f = f - mu*log(-A(1,1) + ulambda);
-f = f - mu*log(A(2,2) - llambda);
-f = f - mu*log(-A(2,2) - ulambda);
-f = f - mu*log(A(1,1)*A(2,2)^(1/2) - (ulambda^2 + A(1,2)^2)^(1/2));
+
+x = convert_from_A(A,b);
+c = c_vec(x,llambda,ulambda);
+f = f - mu*log(c(1));
+f = f - mu*log(c(2));
+f = f - mu*log(c(3));
+f = f - mu*log(c(4));
+f = f - mu*log(c(5));
 
 end
