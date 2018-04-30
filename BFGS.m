@@ -24,9 +24,10 @@ gradient = eval_Pgrad(mu,x,z,w,lambda_minbound,lambda_maxbound); % tilda means: 
         gradient = eval_Pgrad(mu,x,z,w,lambda_minbound,lambda_maxbound);
    
         %Define s,y to compute Hessian
+        B = 1/H;
         s = x-x_prev;
         y = gradient-gradient_prev;
-        r = theta*y + (1 - theta)*H*s; % Her er det B i stedet for H i boken. Vet ikke helt hvor B kommer fra
+        r = theta*y + (1 - theta)*B*s; % Her er det B i stedet for H i boken. Vet ikke helt hvor B kommer fra
 
         % Compute Hessian
         ro = 1/(transpose(y)*s);
