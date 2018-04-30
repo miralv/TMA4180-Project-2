@@ -24,11 +24,22 @@ gradient = eval_Pgrad(mu,x,z,w,lambda_minbound,lambda_maxbound); % tilda means: 
         gradient = eval_Pgrad(mu,x,z,w,lambda_minbound,lambda_maxbound);
    
         %Define s,y to compute Hessian
-        B = 1/H;
         s = x-x_prev;
         y = gradient-gradient_prev;
+        
+        % Compute B, r for Damped BFGS
+        B = 1/H;
         r = theta*y + (1 - theta)*B*s; % Her er det B i stedet for H i boken. Vet ikke helt hvor B kommer fra
-
+        if s'*y >= 0.2*s'*B*s
+            theta = 1;
+        else
+            numerator = s'*B*s-s'*y;
+            theta = 0.8*s'*B*s/numerator;
+        end
+        
+        % Update B
+        B = B - (B*s*s'*B)/(s'*B*s) + (r*r')/(s'*r);
+        
         % Compute Hessian
         ro = 1/(transpose(y)*s);
         H = (I-ro*(s*transpose(y))) * H * (I-ro*(y*transpose(s))) + ro*(s*s.');
