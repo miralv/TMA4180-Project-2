@@ -21,7 +21,7 @@ function [alpha] = linesearch(x,p,Z,w,c2,lambda_minbound,lambda_maxbound,mu)
     n_iter = 0;
 
     while not_finished
-        if n_iter > 100
+        if n_iter > 100 && n_iter < 200
             % this message is added for testing reasons
             %error('Loop is stuck')
             % continue without using the curvature condition.
@@ -55,7 +55,11 @@ function [alpha] = linesearch(x,p,Z,w,c2,lambda_minbound,lambda_maxbound,mu)
         else
             % A feasible alpha satisfying sufficient decrease and curvature
             % condition is found
+            if f_new < f && isStrictlyFeasible(x+ alpha*p,lambda_minbound,lambda_maxbound)
             not_finished = 0;
+            else
+                error('Loop is stuck')
+            end
         end % if
     end % while
 end % function

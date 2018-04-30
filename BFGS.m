@@ -42,7 +42,7 @@ B = u*u';
         end
         
         % Update B
-        B = B - (B*s*s'*B)/(s'*B*s) + (r*r')/(s'*r);
+        B = B - (B*(s*s')*B)/(s'*B*s) + (r*r')/(s'*r);
         
         % Cholesky-dekomposisjon
         L = chol(B);
