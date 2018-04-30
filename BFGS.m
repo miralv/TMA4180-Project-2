@@ -14,7 +14,7 @@ H=H0;
         p = -H*gradient;
         
         % Compute step length from linesearch method
-        alpha = linesearch(x,p,z,w,dim,c2);
+        alpha = linesearch(x,p,z,w,dim,c2,lambda_minbound,lambda_maxbound);
 
         % Update x-vector and gradient and store the previous ones
         x_prev = x;
