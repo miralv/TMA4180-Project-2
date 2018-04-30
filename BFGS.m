@@ -1,5 +1,6 @@
 function [x] = BFGS(mu,x0,epsilon,z,w,dim)
 
+theta = 10^-2;
 c2 = 0.9;
 steps=0;
 H0 = eye(length(x0)); % initial approx. Hessian
@@ -25,6 +26,7 @@ gradient = eval_Pgrad(mu,x,z,w,lambda_minbound,lambda_maxbound); % tilda means: 
         %Define s,y to compute Hessian
         s = x-x_prev;
         y = gradient-gradient_prev;
+        r = theta*y + (1 - theta)*H*s; % Her er det B i stedet for H i boken. Vet ikke helt hvor B kommer fra
 
         % Compute Hessian
         ro = 1/(transpose(y)*s);
