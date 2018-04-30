@@ -9,8 +9,8 @@ function [alpha] = linesearch(x,p,Z,w,c2,lambda_minbound,lambda_maxbound,mu)
     grad = eval_Pgrad(mu,x,Z,w,lambda_minbound, lambda_maxbound);
     
     % first, make sure that x + alpha*p is strictly feasible
-    while ~isStrictlyFeasible(x+ alpha*p,lambda_minbound,lambda_maxbound)
-        alpha = alpha/2;
+    while ~isStrictlyFeasible(x+ alpha*p,lambda_minbound,lambda_maxbound
+        )
     end
     f_new = eval_P(x + alpha*p,Z,w,mu,lambda_minbound,lambda_maxbound);
     grad_new = eval_Pgrad(mu,x+alpha*p,Z,w,lambda_minbound, lambda_maxbound);

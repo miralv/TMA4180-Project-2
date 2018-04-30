@@ -20,7 +20,7 @@ B = u*u';
         p = -H*gradient;
         
         % Compute step length from linesearch method
-        alpha = linesearch(x,p,z,w,c2,lambda_minbound,lambda_maxbound);
+        alpha = linesearch(x,p,z,w,c2,lambda_minbound,lambda_maxbound,mu);
 
         % Update x-vector and gradient and store the previous ones
         x_prev = x;
@@ -55,6 +55,6 @@ B = u*u';
 
         steps=steps+1;
     end % while
-    disp(steps)
+    %disp(steps)
 end % function
 

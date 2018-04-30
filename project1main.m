@@ -1,11 +1,11 @@
 
-rng(62); % set seed random number generator
+%rng(62); % set seed random number generator
 error = 0; % 0 or 1 
 epsilon = 1e-4;
 dim = 2; % matrix dimension
 m = 1000; % no. of z in test problem
 modelnumber = 2;
-lambda_minbound = 1;
+lambda_minbound = 0.5;
 lambda_maxbound = 10;
 mu = 1;
 %x0 = [1,1,0,0,0]';

@@ -5,7 +5,8 @@ function [f] = eval_P(x,Z,w,mu,lambda_minbound,lambda_maxbound)
 % b nx1 vector, last n elements of x
 % Z nxm matrix with datapoints, where column i is datapoint nr i
 % w correspoinding labels
-[A,b] = build_A_vec(x);
+dim =2;
+[A,b] = build_A_vec(x,dim);
 
 m = length(w);
 f = 0; %function evaluation
