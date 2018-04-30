@@ -8,14 +8,14 @@ modelnumber = 2;
 lambda_minbound = 1;
 lambda_maxbound = 10;
 mu = 1;
-x0 = [1,1,0,0,0]';
+%x0 = [1,1,0,0,0]';
 % Making testproblems
 [z,w,A_true,vec_true] = testproblems(m,dim,error,modelnumber);
 A_init = eye(dim);
-c_init = ones(dim,1);
+b_init = ones(dim,1);
 
 % Converting to single x
-x = convert_from_A(A_init,c_init);
+x0 = convert_from_A(A_init,b_init);
 
 % Solve optimization problem
 %x = BFGS(mu,x,epsilon,z,w,lambda_minbound,lambda_maxbound);
