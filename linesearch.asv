@@ -1,4 +1,5 @@
-function [alpha] = linesearch(x,p,z,w,c2,lambda_minbound,lambda_maxbound) 
+function [alpha] = linesearch(x,p,z,w,dim,c2,lambda_minbound,lambda_maxbound) 
+%dim er nå alltid lik, trenger deror ikke å ta det inn som argument
 
     alpha = 1; % initial steplength
     c1 = 1e-4; 
@@ -12,9 +13,10 @@ function [alpha] = linesearch(x,p,z,w,c2,lambda_minbound,lambda_maxbound)
     grad_new = eval_Pgrad(mu,x+alpha*p,z,w,lambda_minbound, lambda_maxbound);
   
     not_finished = 1;
+    % A condition 
     curvature_condition_in_use = 1;
     n_iter = 0;
-
+    % Get sufficient decrease AND make sure we are in feasible region
     while not_finished
         if n_iter > 100
             % this message is added for testing reasons
