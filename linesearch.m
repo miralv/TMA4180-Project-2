@@ -11,7 +11,11 @@ function [alpha] = linesearch(x,p,z,w,dim,c2,lambda_minbound,lambda_maxbound)
     not_finished = 1
     % Get sufficient decrease AND make sure we are in feasible region
     while not_finished
-        if (f_new > f + c1*alpha*grad.'*p)||(~isFeasible(x+ alpha*p,lambda_minbound,lambda_maxbound))
+        if (~isFeasible(x+ alpha*p,lambda_minbound,lambda_maxbound))
+            amax = alpha;
+            alpha = (amin + amax)/2;
+            [f_new,grad_new] = model_1eval(x+alpha*p,z,w,dim);
+        elseif (f_new > f + c1*alpha*grad.'*p))
             amax = alpha;
             alpha = (amin + amax)/2;
             [f_new,grad_new] = model_1eval(x+alpha*p,z,w,dim);
