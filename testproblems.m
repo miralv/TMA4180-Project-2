@@ -6,7 +6,7 @@ function [z,w,A,vec] = testproblems(n,dim,error,modelnumber)
     temp = rand(dim,dim,1)*0.2;
     A = (temp + temp.')/2;
     A = A + eye(dim)*dim;
-    A(2,2) = -A(2,2);
+    %A(2,2) = -A(2,2);
     w = zeros(n,1);
     
     if (modelnumber == 1)

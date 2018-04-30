@@ -45,10 +45,10 @@ function visualization(z,w,A,vec,A_true,vec_true, modelnumber)
             ymin = -0.6;
             ymax = 2.6;
         case 2
-            xmin = -1.35;
-            xmax = 1.35;
-            ymin = -1.35;
-            ymax = 1.35;
+            xmin = -3;%1.35;
+            xmax = 3;%1.35;
+            ymin = -3;%1.35;
+            ymax = 3;%1.35;
     end
 
     %plot in 2 dimensions

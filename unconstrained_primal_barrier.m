@@ -5,7 +5,7 @@
 
 function [x] = unconstrained_primal_barrier(x0, z, w,lambda_minbound,lambda_maxbound)
     tau = 1;
-    mu = 100;
+    mu = 10;
     x = BFGS(mu,x0,tau,z,w,lambda_minbound,lambda_maxbound);
     for i = 1:10
         tau = tau/2;

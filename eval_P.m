@@ -17,7 +17,7 @@ for i = 1:m
     % Har bare ganget inn w(i) som sparer fire linjer med kode.
 end
 
-x = convert_from_A(A,b);
+%x = convert_from_A(A,b);
 c = c_vec(x,lambda_minbound,lambda_maxbound);
 f = f - mu*log(c(1));
 f = f - mu*log(c(2));

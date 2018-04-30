@@ -1,5 +1,5 @@
 function [alpha] = linesearch(x,p,Z,w,c2,lambda_minbound,lambda_maxbound,mu) 
-
+    
     alpha = 1; % initial steplength
     c1 = 1e-4; 
     amin = 0;
@@ -22,8 +22,6 @@ function [alpha] = linesearch(x,p,Z,w,c2,lambda_minbound,lambda_maxbound,mu)
 
     while not_finished
         if n_iter > 100 && n_iter < 200
-            % this message is added for testing reasons
-            %error('Loop is stuck')
             % continue without using the curvature condition.
             curvature_condition_in_use = 0;
         elseif n_iter > 200
@@ -53,8 +51,6 @@ function [alpha] = linesearch(x,p,Z,w,c2,lambda_minbound,lambda_maxbound,mu)
             grad_new = eval_Pgrad(mu,x+alpha*p,Z,w,lambda_minbound, lambda_maxbound);
             n_iter = n_iter + 1;
         else
-            % A feasible alpha satisfying sufficient decrease and curvature
-            % condition is found
             if f_new < f && isStrictlyFeasible(x+ alpha*p,lambda_minbound,lambda_maxbound)
             not_finished = 0;
             else

@@ -20,7 +20,7 @@ B = u*u';
         p = -H*gradient;
         
         % Compute step length from linesearch method
-        alpha = linesearch(x,p,z,w,c2,lambda_minbound,lambda_maxbound,mu);
+        alpha = linesearch_v2(x,p,z,w,lambda_minbound,lambda_maxbound,mu);
 
         % Update x-vector and gradient and store the previous ones
         x_prev = x;
@@ -33,16 +33,16 @@ B = u*u';
         y = gradient-gradient_prev;
         
         % Compute B, r for Damped BFGS
-        r = theta*y + (1 - theta)*B*s; % Her er det B i stedet for H i boken. Vet ikke helt hvor B kommer fra
+        % Her er det B i stedet for H i boken. Vet ikke helt hvor B kommer fra
         if s'*y >= 0.2*s'*B*s
             theta = 1;
         else
             numerator = s'*B*s-s'*y;
             theta = 0.8*s'*B*s/numerator;
         end
-        
+        r = theta*y + (1 - theta)*B*s;
         % Update B
-        B = B - (B*(s*s')*B)/(s'*B*s) + (r*r')/(s'*r);
+        B = B - (B*s*s'*B)/(s'*B*s) + (r*r')/(s'*r);
         
         % Cholesky-dekomposisjon
         L = chol(B);
@@ -55,6 +55,6 @@ B = u*u';
 
         steps=steps+1;
     end % while
-    %disp(steps)
+    disp(steps)
 end % function
 
