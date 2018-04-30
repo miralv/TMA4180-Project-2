@@ -9,11 +9,13 @@ x=x0;
 H=H0;
 gradient = eval_Pgrad(mu,x,z,w,lambda_minbound,lambda_maxbound); % tilda means: ignore output
 
+% Cholesky-dekomposisjon
+L = chol(H);
+u = eye(5)/L;
+B = u*u';
+
     % Continue search until the descent is less than epsilon
     while (norm(gradient)> epsilon)
-        % Compute B
-        B = 1/H;
-        
         % Search directon
         p = -H*gradient;
         
@@ -41,6 +43,11 @@ gradient = eval_Pgrad(mu,x,z,w,lambda_minbound,lambda_maxbound); % tilda means: 
         
         % Update B
         B = B - (B*s*s'*B)/(s'*B*s) + (r*r')/(s'*r);
+        
+        % Cholesky-dekomposisjon
+        L = chol(B);
+        u = eye(5)/L;
+        H = u*u';
         
         % Compute Hessian
         ro = 1/(transpose(y)*s);
