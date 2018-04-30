@@ -11,5 +11,6 @@ function [x] = unconstrained_primal_barrier(x0, z, w,lambda_minbound,lambda_maxb
         tau = tau/2;
         mu = mu/2;
         x = BFGS(mu,x,tau,z,w,lambda_minbound,lambda_maxbound);
+        % VIKTIG: choose new x: velger her den som tidligere ble funnet 
     end
 end
