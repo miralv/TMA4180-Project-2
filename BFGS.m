@@ -11,6 +11,9 @@ gradient = eval_Pgrad(mu,x,z,w,lambda_minbound,lambda_maxbound); % tilda means: 
 
     % Continue search until the descent is less than epsilon
     while (norm(gradient)> epsilon)
+        % Compute B
+        B = 1/H;
+        
         % Search directon
         p = -H*gradient;
         
@@ -28,7 +31,6 @@ gradient = eval_Pgrad(mu,x,z,w,lambda_minbound,lambda_maxbound); % tilda means: 
         y = gradient-gradient_prev;
         
         % Compute B, r for Damped BFGS
-        B = 1/H;
         r = theta*y + (1 - theta)*B*s; % Her er det B i stedet for H i boken. Vet ikke helt hvor B kommer fra
         if s'*y >= 0.2*s'*B*s
             theta = 1;
