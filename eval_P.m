@@ -1,10 +1,11 @@
 % Returns the value of the objective function using the log-barrier method.
 
-function [f] = eval_P(A,b,Z,w,mu,lambda_minbound,lambda_maxbound)
+function [f] = eval_P(x,Z,w,mu,lambda_minbound,lambda_maxbound)
 % A nxn symmetric matrix, filled up diagonally by the first n(n+1)/2 elements of x 
 % b nx1 vector, last n elements of x
 % Z nxm matrix with datapoints, where column i is datapoint nr i
 % w correspoinding labels
+[A,b] = build_A_vec(x);
 
 m = length(w);
 f = 0; %function evaluation
