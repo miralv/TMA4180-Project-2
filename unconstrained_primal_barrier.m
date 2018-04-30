@@ -11,6 +11,6 @@ function [x] = unconstrained_primal_barrier(x0, z, w)
     for i = 1:10
         tau = tau/2;
         mu = mu/2;
-        x = BFGS(mu,x0,tau,z,w,dim);
+        x = BFGS(mu,x,tau,z,w,dim);
     end
 end
