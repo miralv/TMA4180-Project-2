@@ -1,4 +1,4 @@
-function [x] = BFGS(mu,x0,epsilon,z,w,dim)
+function [x] = BFGS(mu,x0,epsilon,z,w)
 
 theta = 10^-2;
 c2 = 0.9;
@@ -20,7 +20,7 @@ B = u*u';
         p = -H*gradient;
         
         % Compute step length from linesearch method
-        alpha = linesearch(x,p,z,w,dim,c2,lambda_minbound,lambda_maxbound);
+        alpha = linesearch(x,p,z,w,c2,lambda_minbound,lambda_maxbound);
 
         % Update x-vector and gradient and store the previous ones
         x_prev = x;
