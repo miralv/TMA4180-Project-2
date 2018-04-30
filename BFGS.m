@@ -6,7 +6,7 @@ steps=0;
 H0 = eye(length(x0)); % initial approx. Hessian
 I = eye(size(H0));
 x=x0;
-H=H0;   (mu,x,Z,w,lambda_minbound, lambda_maxbound)
+H=H0;  
 gradient = eval_Pgrad(mu,x,z,w,lambda_minbound,lambda_maxbound); % tilda means: ignore output
 
 % Cholesky-dekomposisjon
