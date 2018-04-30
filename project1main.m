@@ -5,8 +5,9 @@ function [] = main()
     dim = 2; % matrix dimension
     m = 1000; % no. of z in test problem
     modelnumber = 2;
-    method = 2;
-  
+    lambda_minbound = 1;
+    lambda_maxbound = 100;
+    
     % Making testproblems
     [z,w,A_true,vec_true] = testproblems(m,dim,error,modelnumber);
     A_init = eye(dim);
@@ -16,12 +17,8 @@ function [] = main()
     x = convert_from_A(A_init,c_init);
     
     % Solve optimization problem
-    switch method
-        case 1
-            x = BFGS(x,epsilon,z,w,dim);
-        otherwise
-            x = fletcher_reeves(x,epsilon,z,w,dim);
-    end % switch
+    x = BFGS(x,epsilon,z,w,lambda_minbound,lambda_maxbound);
+
     
     % Reconstruct A and b/c 
     [A,vec] = build_A_vec(x,dim);
