@@ -50,8 +50,8 @@ B = u*u';
         H = u*u';
         
         % Compute Hessian
-        ro = 1/(transpose(y)*s);
-        H = (I-ro*(s*transpose(y))) * H * (I-ro*(y*transpose(s))) + ro*(s*s.');
+        % ro = 1/(transpose(y)*s);
+        % H = (I-ro*(s*transpose(y))) * H * (I-ro*(y*transpose(s))) + ro*(s*s.');
 
         steps=steps+1;
     end % while
