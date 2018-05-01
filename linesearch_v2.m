@@ -34,7 +34,8 @@ function [alpha] = linesearch_v2(x,p,Z,w,lambda_minbound,lambda_maxbound,mu)
                 disp(f_new)
                 disp(f)
                 disp(alpha)
-                error('Loop is stuck')
+                %error('Loop is stuck')
+                not_finished = 0;
             end
         end % if
     end % while

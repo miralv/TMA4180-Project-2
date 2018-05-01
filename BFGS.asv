@@ -27,7 +27,6 @@ B = u*u';
         if f > f_new
             p = -gradient;
             alpha = linesearch_v2(x,p,z,w,lambda_minbound,lambda_maxbound,mu);
-            fprintf('Norm(gradient: )%d',norm(gradient))
         end
 
         % Update x-vector and gradient and store the previous ones
