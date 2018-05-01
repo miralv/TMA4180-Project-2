@@ -2,6 +2,7 @@
 %rng(19); % set seed random number generator
 error = 0; % 0 or 1 
 epsilon = 1e-4;
+epsilon2 = 1e-6;
 dim = 2; % matrix dimension
 m = 30; % no. of z in test problem
 modelnumber = 2;
@@ -18,7 +19,7 @@ b_init = ones(dim,1);
 x0 = convert_from_A(A_init,b_init);
 
 % Solve optimization problem
-x = unconstrained_primal_barrier(x0, z, w,lambda_minbound,lambda_maxbound);
+x = unconstrained_primal_barrier(x0, z, w,lambda_minbound,lambda_maxbound, epsilon2);
 
 % Reconstruct A and b/c 
 [A,vec] = build_A_vec(x,dim);
