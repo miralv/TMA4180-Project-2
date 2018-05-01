@@ -28,15 +28,16 @@ B = u*u';
         p = -H*gradient;
         
         % Compute step length from linesearch method
-        alpha = linesearch_v2(x,p,z,w,lambda_minbound,lambda_maxbound,mu);
+        alpha = linesearch(x,p,z,w,lambda_minbound,lambda_maxbound,mu);
         f = f_new;
         f_new = eval_P(x+ alpha*p,z,w,mu,lambda_minbound,lambda_maxbound);
         % Check whether it is a descent
-        if f > f_new
-            p = -gradient;
-            alpha = linesearch_v2(x,p,z,w,lambda_minbound,lambda_maxbound,mu);
-            %fprintf('Norm(gradient: )%d',norm(gradient))
-        end
+        %MÅ FINNE UT OM DETTE ER NØDVENDIG ETTER AT VI FJERNET DAMPING
+        %if f > f_new
+        %    p = -gradient;
+        %    alpha = linesearch_v2(x,p,z,w,lambda_minbound,lambda_maxbound,mu);
+        %    %fprintf('Norm(gradient: )%d',norm(gradient))
+        %end
 
         % Update x-vector and gradient and store the previous ones
         x_prev = x;
@@ -75,8 +76,14 @@ B = u*u';
         %}
         % END: Damping
         % Compute Hessian
-        ro = 1/(transpose(y)*s);
-        H = (I-ro*(s*transpose(y))) * H * (I-ro*(y*transpose(s))) + ro*(s*s.');
+        
+        if abs(s'*y) > 1e-12
+            % If the angle between s and y is too close to 90 degrees, jump
+            ro = 1/(transpose(y)*s);
+            H = (I-ro*(s*transpose(y))) * H * (I-ro*(y*transpose(s))) + ro*(s*s.');
+        else
+            H = I;
+        end
 
         steps=steps+1;
     end % while

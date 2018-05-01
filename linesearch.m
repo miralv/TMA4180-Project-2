@@ -1,7 +1,8 @@
 function [alpha] = linesearch(x,p,Z,w,lambda_minbound,lambda_maxbound,mu) 
     % initial steplength
     alpha = 1; 
-    c1 = 1e-4; 
+    c1 = 1e-4;
+    rho = 1/2;
     
     % Compute function ang gradient evaluation
     f = eval_P(x,Z,w,mu,lambda_minbound,lambda_maxbound);
