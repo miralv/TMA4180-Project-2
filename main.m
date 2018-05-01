@@ -1,3 +1,5 @@
+close all
+clear
 
 %rng(19); % set seed random number generator
 error = 0; % 0 or 1 
@@ -5,6 +7,8 @@ epsilon = 1e-8;
 epsilon2 = 1e-8;
 dim = 2; % matrix dimension
 m = 150; % no. of z in test problem
+
+% If modelnumber == 2, we make a non-elliptic test-problem. 
 modelnumber = 2;
 lambda_minbound = 0.1;
 lambda_maxbound = 100;
@@ -24,4 +28,4 @@ x = unconstrained_primal_barrier(x0, z, w,lambda_minbound,lambda_maxbound, epsil
 [A,vec] = build_A_vec(x,dim);
 
 % Plot and display error
-visualization(z,w,A,vec,A_true,vec_true, modelnumber);
+visualization(z,w,A,vec,A_true,vec_true);
