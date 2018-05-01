@@ -9,7 +9,7 @@ dim = 2; % matrix dimension
 m = 150; % no. of z in test problem
 
 % If modelnumber == 2, we make a non-elliptic test-problem. 
-modelnumber = 2;
+modelnumber = 1;
 lambda_minbound = 0.1;
 lambda_maxbound = 100;
 mu = 1;

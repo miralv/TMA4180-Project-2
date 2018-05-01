@@ -1,5 +1,5 @@
 function [A,vec] = build_A_vec(x,n)
-% build A, nxn and vector b or c nx1 given the vector x and the dimension n
+% Build A, nxn and vector b nx1 
 
 counter = 1;
 A = diag(x(counter:n));
@@ -9,8 +9,8 @@ for i = 2:n
     A = A + diag(x(counter:counter+number),i-1) + diag(x(counter:counter+number),-i+1);
     counter = counter + number+1;
 end
-% build c/b := vec
+% Build c/b := vec
 nvar = n*(n+1)/2 + n;
-% when calling the function, we know if we want c or b
+% The last n elements of x is b
 vec = x(nvar-n+1:end);
 end
