@@ -32,7 +32,9 @@ function [alpha] = linesearch(x,p,Z,w,lambda_minbound,lambda_maxbound,mu)
                 not_finished = 0;
             else
                 %error('Loop is stuck')
+                if ~ isFeasible(x+ alpha*p,lambda_minbound,lambda_maxbound)
                 alpha = -1;
+                end
                 not_finished = 0;
             end
         end % if
