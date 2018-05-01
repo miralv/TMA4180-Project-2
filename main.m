@@ -6,7 +6,7 @@ error = 0; % 0 or 1
 epsilon = 0.5;
 epsilon2 = 1e-8;
 dim = 2; % matrix dimension
-m = 30; % no. of z in test problem
+m = 300; % no. of z in test problem
 
 % If modelnumber == 2, we make a non-elliptic test-problem. 
 modelnumber = 2;
@@ -21,11 +21,11 @@ max_iter = 200;
 
 
 % Plot points
-[z1_pos,z1_neg,z2_pos,z2_neg] = find_points(z,w);
-figure(1)
-plot(z1_pos,z2_pos,'r+');
-hold on
-plot(z1_neg,z2_neg,'go');
+%[z1_pos,z1_neg,z2_pos,z2_neg] = find_points(z,w);
+%figure(1)
+%plot(z1_pos,z2_pos,'r+');
+%hold on
+%plot(z1_neg,z2_neg,'go');
 % Converting to single x
 x0 = convert_from_A(A_init,b_init);
 

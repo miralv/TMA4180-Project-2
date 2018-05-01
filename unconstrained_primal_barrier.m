@@ -13,8 +13,8 @@ function [x] = unconstrained_primal_barrier(x0, z, w,lambda_minbound,lambda_maxb
         mu = mu*0.2;
         x_new = BFGS(mu,x,tau,z,w,lambda_minbound,lambda_maxbound,max_iter);
         M = eval_Pgrad(mu,x_new,z,w,lambda_minbound, lambda_maxbound);
-        disp(norm(M))
-        disp(mu)
+        %disp(norm(M))
+        %disp(mu)
         if norm(M) < epsilon && mu < epsilon
             final_convergence = 1;
         end

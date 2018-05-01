@@ -25,9 +25,7 @@ function [z,w,A,vec] = testproblems(n,dim,error,modelnumber)
             w(i)=-1;
         end %if    
     end %for
-        
-  
-    
+          
     % add misclassification to some z-vectors (noise in training set)
     if (error==1)
         failtotal = floor(failrate*n);
