@@ -1,19 +1,18 @@
 
 %rng(19); % set seed random number generator
 error = 0; % 0 or 1 
-epsilon = 1e-4;
-epsilon2 = 1e-6;
+epsilon = 1e-8;
+epsilon2 = 1e-8;
 dim = 2; % matrix dimension
-m = 30; % no. of z in test problem
+m = 100; % no. of z in test problem
 modelnumber = 2;
-lambda_minbound = 0.2;
+lambda_minbound = 0.1;
 lambda_maxbound = 100;
 mu = 1;
 
 % Making testproblems
 [z,w,A_true,vec_true] = testproblems(m,dim,error,modelnumber);
-A_init = eye(dim);
-b_init = ones(dim,1);
+[A_init, b_init] = initialGuess(lambda_minbound, lambda_maxbound);
 
 % Converting to single x
 x0 = convert_from_A(A_init,b_init);
