@@ -7,12 +7,13 @@ function [x] = unconstrained_primal_barrier(x0, z, w,lambda_minbound,lambda_maxb
     tau = 1;
     mu = 10;
     x = BFGS(mu,x0,tau,z,w,lambda_minbound,lambda_maxbound);
-    for i = 1:10
+    final_convergence = 0;
+    while final_convergence == 0
         tau = tau/2;
         mu = mu/2;
         x_new = BFGS(mu,x,tau,z,w,lambda_minbound,lambda_maxbound);
         if norm(x-x_new) < epsilon
-            break
+            final_convergence = 1;
         end
         x = x_new;
         % VIKTIG: choose new x: velger her den som tidligere ble funnet 
