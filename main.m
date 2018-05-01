@@ -3,7 +3,7 @@
 error = 0; % 0 or 1 
 epsilon = 1e-4;
 dim = 2; % matrix dimension
-m = 20; % no. of z in test problem
+m = 30; % no. of z in test problem
 modelnumber = 2;
 lambda_minbound = 0.2;
 lambda_maxbound = 100;

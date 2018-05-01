@@ -9,13 +9,14 @@ x=x0;
 H=H0;  
 gradient = eval_Pgrad(mu,x,z,w,lambda_minbound,lambda_maxbound); % tilda means: ignore output
 f_new = eval_P(x,z,w,mu,lambda_minbound,lambda_maxbound);
+f = 0;
 % Cholesky-dekomposisjon
 L = chol(H);
 u = eye(5)/L;
 B = u*u';
 
     % Continue search until the descent is less than epsilon
-    while (norm(gradient)> epsilon)
+    while (norm(gradient)> epsilon)&&(abs(f_new - f)>1e-12)
         % Search directon
         p = -H*gradient;
         
