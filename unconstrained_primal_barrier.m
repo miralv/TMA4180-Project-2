@@ -10,9 +10,10 @@ function [x] = unconstrained_primal_barrier(x0, z, w,lambda_minbound,lambda_maxb
     final_convergence = 0;
     while final_convergence == 0
         tau = tau/2;
-        mu = mu/2;
+        mu = mu*0.2;
         x_new = BFGS(mu,x,tau,z,w,lambda_minbound,lambda_maxbound);
-        if norm(x-x_new) < epsilon
+        M = eval_Pgrad(mu,x_new,z,w,lambda_minbound, lambda_maxbound);
+        if norm(M) < epsilon && mu < epsilon
             final_convergence = 1;
         end
         x = x_new;
