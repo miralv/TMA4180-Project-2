@@ -84,7 +84,7 @@ B = u*u';
         else
             H = I;
         end
-        disp(s'*y)
+        %disp(s'*y)
         steps=steps+1;
     end % while
     % disp(steps)
