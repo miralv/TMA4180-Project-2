@@ -28,11 +28,11 @@ function [alpha] = linesearch(x,p,Z,w,lambda_minbound,lambda_maxbound,mu)
             f_new = eval_P(x + alpha*p,Z,w,mu,lambda_minbound,lambda_maxbound);
             n_iter = n_iter + 1;
         else
-            if f_new <= f && isFeasible(x+ alpha*p,lambda_minbound,lambda_maxbound)
+            if f_new <= f && isStrictlyFeasible(x+ alpha*p,lambda_minbound,lambda_maxbound)
                 not_finished = 0;
             else
                 %error('Loop is stuck')
-                if ~ isFeasible(x+ alpha*p,lambda_minbound,lambda_maxbound)
+                if ~ isStrictlyFeasible(x+ alpha*p,lambda_minbound,lambda_maxbound)
                 alpha = -1;
                 end
                 not_finished = 0;

@@ -43,12 +43,6 @@ B = u*u';
             %fprintf('Norm(gradient: )%d',norm(gradient))
         %end
 
-        if(~isStrictlyFeasible(x,lambda_minbound,lambda_maxbound))
-            error('Vi er på utsiden av constraintsene!!!')
-        end
-        isFeasible(x,lambda_minbound,lambda_maxbound);
-        g = [x(1),x(3);x(3),x(2)];
-        [e,v]= eig(g);
         % Update x-vector and gradient and store the previous ones
         x_prev = x;
         gradient_prev = gradient;
@@ -92,7 +86,7 @@ B = u*u';
             ro = 1/(transpose(y)*s);
             H = (I-ro*(s*transpose(y))) * H * (I-ro*(y*transpose(s))) + ro*(s*s.');
         else
-            H = I;
+            %H = I;
         end
         %disp(s'*y)
         steps=steps+1;
