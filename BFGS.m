@@ -46,9 +46,7 @@ B = u*u';
         if(~isStrictlyFeasible(x,lambda_minbound,lambda_maxbound))
             error('Vi er på utsiden av constraintsene!!!')
         end
-        isFeasible(x,lambda_minbound,lambda_maxbound);
-        g = [x(1),x(3);x(3),x(2)];
-        [e,v]= eig(g);
+
         % Update x-vector and gradient and store the previous ones
         x_prev = x;
         gradient_prev = gradient;
