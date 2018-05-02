@@ -2,7 +2,7 @@ close all
 clear
 
 %rng(19); % set seed random number generator 
-epsilon = 1e-5;
+epsilon = 1e-4;
 dim = 2; % matrix dimension
 m = 50; % no. of z in test problem
 
@@ -11,7 +11,7 @@ modelnumber = 1;
 lambda_minbound = 0.1;
 lambda_maxbound = 100;
 mu = 1;
-max_iter = 200;
+max_iter = 100;
 
 % Making testproblems
 [z,w,A_true,vec_true] = testproblems(m,dim,modelnumber);
