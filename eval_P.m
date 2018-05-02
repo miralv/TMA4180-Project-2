@@ -12,7 +12,7 @@ m = length(w);
 f = 0; %function evaluation
 
 for i = 1:m
-    f = f + max((Z(:,i)'*A*Z(:,i) + b'*Z(:,i) - 1)*w(i),0);
+    f = f + max((Z(:,i)'*A*Z(:,i) + b'*Z(:,i) - 1)*w(i),0)^2;
     % Kompaktisert denne litt fra 2eval.m
     % Har bare ganget inn w(i) som sparer fire linjer med kode.
 end

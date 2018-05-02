@@ -4,12 +4,12 @@ clear
 %rng(19); % set seed random number generator
 error = 0; % 0 or 1 
 epsilon = 1e-5;
-epsilon2 = 1e-8;
+epsilon2 = 1e-10;
 dim = 2; % matrix dimension
 m = 30; % no. of z in test problem
 
 % If modelnumber == 2, we make a non-elliptic test-problem. 
-modelnumber = 2;
+modelnumber = 1;
 lambda_minbound = 0.1;
 lambda_maxbound = 100;
 mu = 1;
