@@ -2,7 +2,7 @@ function [x] = BFGS(mu,x0,epsilon,z,w,lambda_minbound,lambda_maxbound,max_iter)
 
 steps=0;
 H = eye(length(x0)); % initial approx. Hessian
-I = eye(size(H0));
+I = eye(size(H));
 x=x0;  
 gradient = eval_Pgrad(mu,x,z,w,lambda_minbound,lambda_maxbound); % tilda means: ignore output
 
