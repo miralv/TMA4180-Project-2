@@ -1,4 +1,5 @@
-function [alpha] = linesearch(x,p,Z,w,lambda_minbound,lambda_maxbound,mu) 
+function [alpha] = linesearch(x,p,Z,w,lambda_minbound,lambda_maxbound,mu)
+
     % initial steplength
     alpha = 1; 
     c1 = 1e-4;
