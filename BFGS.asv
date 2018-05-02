@@ -31,7 +31,7 @@ B = u*u';
         if (alpha == -1)
             p = -gradient/norm(gradient);
             alpha = linesearch(x,p,z,w,lambda_minbound,lambda_maxbound,mu);
-            disp('action')
+            %disp('action')
         end
         f = f_new;
         f_new = eval_P(x+ alpha*p,z,w,mu,lambda_minbound,lambda_maxbound);
@@ -92,10 +92,11 @@ B = u*u';
             ro = 1/(transpose(y)*s);
             H = (I-ro*(s*transpose(y))) * H * (I-ro*(y*transpose(s))) + ro*(s*s.');
         else
-            H = I;
+            
+            %H = I;
         end
         %disp(s'*y)
-        %plot_ellipsoid(z,w,x)
+        plot_ellipsoid(z,w,x)
         steps=steps+1;
     end % while
     % disp(steps)

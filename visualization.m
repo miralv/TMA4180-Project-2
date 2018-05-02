@@ -48,7 +48,7 @@ function visualization(z,w,A,vec,A_true,vec_true)
 
     %contour level
     v = [0;0]; 
-    figure(2)
+    %figure(2)
     [z1_pos,z1_neg,z2_pos,z2_neg]=find_points(z,w);
     plot(z1_pos,z2_pos,'r+');
     axis([xmin xmax ymin ymax])

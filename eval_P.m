@@ -16,6 +16,7 @@ for i = 1:m
     % Kompaktisert denne litt fra 2eval.m
     % Har bare ganget inn w(i) som sparer fire linjer med kode.
 
+
 end
 
 c = c_vec(x,lambda_minbound,lambda_maxbound);
