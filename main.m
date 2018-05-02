@@ -2,9 +2,9 @@ close all
 clear
 
 %rng(19); % set seed random number generator 
-epsilon = 1e-4;
+epsilon = 1e-8;
 dim = 2; % matrix dimension
-m = 50; % no. of z in test problem
+m = 15; % no. of z in test problem
 
 % If modelnumber == 2, we make a non-elliptic test-problem. 
 modelnumber = 1;
