@@ -18,13 +18,7 @@ function [alpha] = linesearch(x,p,Z,w,lambda_minbound,lambda_maxbound,mu)
 
     while not_finished
         
-        if (~isStrictlyFeasible(x+ alpha*p,lambda_minbound,lambda_maxbound))
-            alpha = alpha*rho;
-            f_new = eval_P(x + alpha*p,Z,w,mu,lambda_minbound,lambda_maxbound);
-            n_iter = n_iter + 1;
-        
-         % Tries to fulfill the sufficient decrease condition
-        elseif (f_new > f + c1*alpha*grad.'*p) && n_iter<50    
+        if ((~isStrictlyFeasible(x+ alpha*p,lambda_minbound,lambda_maxbound))||(f_new > f + c1*alpha*grad.'*p)) && n_iter<50  
             alpha = alpha*rho;
             f_new = eval_P(x + alpha*p,Z,w,mu,lambda_minbound,lambda_maxbound);
             n_iter = n_iter + 1;
