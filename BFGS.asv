@@ -33,7 +33,7 @@ gradient = eval_Pgrad(mu,x,z,w,lambda_minbound,lambda_maxbound); % tilda means: 
             ro = 1/(transpose(y)*s);
             H = (I-ro*(s*transpose(y))) * H * (I-ro*(y*transpose(s))) + ro*(s*s.');
         end
-        %if not, H_k+1 = H_k
+        %if not, H
         
         steps=steps+1;
     end % while
