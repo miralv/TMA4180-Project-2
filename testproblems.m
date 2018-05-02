@@ -1,6 +1,4 @@
-function [z,w,A,vec] = testproblems(n,dim,error,modelnumber)
-    
-    failrate = 0.1; % misclassification rate
+function [z,w,A,vec] = testproblems(n,dim,modelnumber)
     
     % Generate a random, positive definite matrix and center point
     temp = rand(dim,dim,1)*0.2;
@@ -25,15 +23,6 @@ function [z,w,A,vec] = testproblems(n,dim,error,modelnumber)
             w(i)=-1;
         end %if    
     end %for
-          
-    % add misclassification to some z-vectors (noise in training set)
-    if (error==1)
-        failtotal = floor(failrate*n);
-        labelswitch= randi(n,failtotal,1);
-        for x = labelswitch
-            w(x)=-w(x);
-        end % for
-    end % if     
     
 end % function
 

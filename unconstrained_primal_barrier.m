@@ -10,8 +10,8 @@ function [x] = unconstrained_primal_barrier(x0, z, w,lambda_minbound,lambda_maxb
     x = BFGS(mu,x0,tau,z,w,lambda_minbound,lambda_maxbound,max_iter);
     final_convergence = 0;
     while final_convergence == 0 
-        tau = tau*0.8;
-        mu = mu*0.2;
+        tau = tau/2;
+        mu = mu*0.1;
         x_new = BFGS(mu,x,tau,z,w,lambda_minbound,lambda_maxbound,max_iter);
         M = eval_Pgrad(mu,x_new,z,w,lambda_minbound, lambda_maxbound);
         %disp(norm(M))

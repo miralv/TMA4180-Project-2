@@ -1,5 +1,3 @@
-% Status: Original BFGS
-
 function [x] = BFGS(mu,x0,epsilon,z,w,lambda_minbound,lambda_maxbound,max_iter)
 
 %theta = 10^-2;
@@ -12,7 +10,7 @@ H=H0;
 gradient = eval_Pgrad(mu,x,z,w,lambda_minbound,lambda_maxbound); % tilda means: ignore output
 f_new = eval_P(x,z,w,mu,lambda_minbound,lambda_maxbound);
 f = 0;
-
+alpha = 1;
 % START: DAMPING
 %{
 % Cholesky-dekomposisjon
@@ -23,7 +21,7 @@ B = u*u';
 % END: DAMPING
 
     % Continue search until the descent is less than epsilon
-    while (norm(gradient)> epsilon)&&(steps<max_iter)&&(abs(f_new - f)>1e-12)
+    while (norm(gradient)> epsilon)&&(steps<max_iter)&&(alpha>1e-12)%(abs(f_new - f)>1e-12)
         % Search directon
         p = -H*gradient;
         
@@ -90,11 +88,10 @@ B = u*u';
             ro = 1/(transpose(y)*s);
             H = (I-ro*(s*transpose(y))) * H * (I-ro*(y*transpose(s))) + ro*(s*s.');
         else
-            H = I;
+            %H = I;
         end
         %disp(s'*y)
         steps=steps+1;
     end % while
     % disp(steps)
 end % function
-

@@ -71,7 +71,6 @@ end % visualization
 
 function res = h(Z,A,vector)
 % Z nxm matrix of datapoints
-% vector = c if model 1, b if model 2
 m = size(Z,2);
 res = zeros(1,m);
 
