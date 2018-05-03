@@ -1,4 +1,4 @@
-function visualization(z,w,A,vec,A_true,vec_true,small_lambda)
+function visualization(z,w,A,vec,A_true,vec_true)
     
     m=length(z);
     % Classify z based on A & b:

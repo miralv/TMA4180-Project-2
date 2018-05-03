@@ -11,7 +11,7 @@ max_iter = 100;
 % Choose modeltype
 % If model number == 1, we make an elliptic test-problem
 % If modelnumber == 2, we make a non-elliptic test-problem.
-modelnumber = 1;
+modelnumber = 2;
 
 
 
