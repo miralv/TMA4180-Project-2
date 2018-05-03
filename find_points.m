@@ -1,7 +1,5 @@
 function[z1_pos,z1_neg,z2_pos,z2_neg] = find_points(Z,w)
-% Z nxm matrix with m data points of dimension n
-% w mx1 vector with corresponding weights
-% dimension = 2 or 3
+% Was used when plotting
 
 filter = w>0;
 %find x and y coordinates of Z with positive weight  

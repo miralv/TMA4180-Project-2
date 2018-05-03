@@ -1,29 +1,20 @@
 close all
 clear
-
-
-%rng(19); % set seed random number generator
-error = 0; % 0 or 1 
-
-
+rng(19); % set seed random number generator
 dim = 2; % matrix dimension
-m = 30; % no. of z in test problem
-
-% If modelnumber == 2, we make a non-elliptic test-problem. 
-modelnumber = 1;
-lambda_minbound = 0.2;
-lambda_maxbound = 10;%5;
-mu = 1;
+m = 100; % no. of z in test problem
+lambda_minbound = 5;
+lambda_maxbound = 10;
+epsilon = 1e-2;
 max_iter = 100;
 
-if modelnumber == 1
-    epsilon = 1e-10;
-else
-    epsilon = 1e-2;
-end
+% Choose modeltype
+% If model number == 1, we make an elliptic test-problem
+% If modelnumber == 2, we make a non-elliptic test-problem.
+modelnumber = 1;
 
 
-for i = 1:10
+
 % Making testproblems
 [z,w,A_true,vec_true] = testproblems(m,dim,modelnumber);
 [A_init, b_init] = initialGuess(lambda_minbound, lambda_maxbound);
@@ -31,32 +22,12 @@ for i = 1:10
 % Converting to single x
 x0 = convert_from_A(A_init,b_init);
 
-% 
-% [z1_pos,z1_neg,z2_pos,z2_neg] = find_points(z,w);
-% figure(i)
-% plot(z1_pos,z2_pos,'r+');
-% hold on
-% plot(z1_neg,z2_neg,'go');
-
-
 % Solve optimization problem
-x = unconstrained_primal_barrier(x0, z, w,lambda_minbound,lambda_maxbound, epsilon,max_iter);
+x = unconstrained_primal_barrier(x0, z, w,lambda_minbound,lambda_maxbound, epsilon,max_iter,modelnumber);
 
 % Reconstruct A and b/c 
 [A,vec] = build_A_vec(x,dim);
 
-%disp(eval_Pgrad(mu,x,z,w,lambda_minbound, lambda_maxbound))
-%disp(model_2(A,vec,z,w))
-
-
 % Plot and display error
-figure(i+1)
-
 visualization(z,w,A,vec,A_true,vec_true);
-end
-% % Plot points
-% [z1_pos,z1_neg,z2_pos,z2_neg] = find_points(z,w);
-% figure(1)
-% plot(z1_pos,z2_pos,'r+');
-% hold on
-% plot(z1_neg,z2_neg,'go');
+

@@ -1,4 +1,4 @@
-function visualization(z,w,A,vec,A_true,vec_true)
+function visualization(z,w,A,vec,A_true,vec_true,small_lambda)
     
     m=length(z);
     % Classify z based on A & b:
@@ -14,7 +14,7 @@ function visualization(z,w,A,vec,A_true,vec_true)
     end %for
 
     
-    
+    % Find specificity and sensitivity
     total = sum(w==classification);
     m = length(w);
     true_pos_classified = sum(w==classification & w==1);
@@ -29,11 +29,12 @@ function visualization(z,w,A,vec,A_true,vec_true)
     fprintf('%i points out of %i correctly classified.\n',total,m)
     
     % Plot ellipses and data points
-    xmin = -2;%1.35;
-    xmax = 2;%1.35;
-    ymin = -2;%1.35;
-    ymax = 2;%1.35;
-
+    xmin = -1.35;
+    xmax = 1.35;
+    ymin = -1.35;
+    ymax = 1.35;
+    
+    
     n_gridpoints = 100;
     x = linspace(xmin,xmax,n_gridpoints);
     y = linspace(ymin,ymax,n_gridpoints);
@@ -48,7 +49,7 @@ function visualization(z,w,A,vec,A_true,vec_true)
 
     %contour level
     v = [0;0]; 
-    %figure(2)
+    figure(1)
     [z1_pos,z1_neg,z2_pos,z2_neg]=find_points(z,w);
     plot(z1_pos,z2_pos,'r+');
     axis([xmin xmax ymin ymax])
@@ -58,19 +59,12 @@ function visualization(z,w,A,vec,A_true,vec_true)
     contour(X,Y,Z_true,v,'k');
     xlabel('z_1')
     ylabel('z_2')
-
-
-    title("Model 2")
     legend("w_i > 0","w_i \leq 0","S_{A,b}","True S_{A,b}");
-
-    %print('mod2-met2-error','-depsc')
-
-
  
 end % visualization
 
 function res = h(Z,A,vector)
-% Z nxm matrix of datapoints
+% For getting contour level
 m = size(Z,2);
 res = zeros(1,m);
 

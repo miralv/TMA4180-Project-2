@@ -1,10 +1,7 @@
 function [eval,grad_f] = model_2eval(x,Z,w,n)
-% A nxn symmetric matrix, filled up diagonally by the first n(n+1)/2 elements of x 
-% c nx1 vector, last n elements of x
-% Z nxm matrix with datapoints, where column i is datapoint nr i
-% w correspoinding labels
+% Function and gradient evaluation of f
 
-%build A and b
+
 [A,b] = build_A_vec(x,n);
 
 nvar = n*(n+1)/2 + n;

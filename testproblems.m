@@ -1,4 +1,5 @@
 function [z,w,A,vec] = testproblems(n,dim,modelnumber)
+    % Creates test problem
     
     % Generate a random, positive definite matrix and center point
     temp = rand(dim,dim,1)*0.2;

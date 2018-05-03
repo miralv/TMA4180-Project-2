@@ -1,9 +1,6 @@
 function res = model_2(A,b,Z,w)
-% function evaluation of model 2
-% A nxn symmetric matrix 
-% b nx1 vector
-% Z nxm matrix with datapoints
-% w correspoinding labels
+% Function evaluation of f
+
 m = length(b);
 res = 0;
 for i = 1:m
